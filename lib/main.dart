@@ -15,7 +15,6 @@ class MyApp extends StatelessWidget {
       title: 'Navigation App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        fontFamily: 'Arial',
       ),
       home: const FirstScreen(),
     );
@@ -43,48 +42,80 @@ class FirstScreen extends StatelessWidget {
         child: Center(
           child: Card(
             elevation: 12,
+            margin: const EdgeInsets.all(25),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
             ),
-            margin: const EdgeInsets.all(25),
             child: Padding(
               padding: const EdgeInsets.all(30),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Icon(
-                    Icons.home,
-                    size: 80,
-                    color: Colors.blue,
+                  Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Colors.blue.shade100,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.flutter_dash,
+                      size: 70,
+                      color: Colors.blue,
+                    ),
                   ),
+
                   const SizedBox(height: 20),
+
                   const Text(
-                    "Welcome",
+                    "Navigation App",
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+
                   const SizedBox(height: 10),
+
                   const Text(
-                    "Ini adalah halaman pertama.\nTekan tombol di bawah untuk menuju halaman kedua.",
+                    "Belajar Flutter Navigation\nMenggunakan Git & GitHub",
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black54,
+                    ),
                   ),
+
                   const SizedBox(height: 30),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      buildFeature(Icons.flutter_dash, "Flutter"),
+                      buildFeature(Icons.navigation, "Navigation"),
+                      buildFeature(Icons.code, "Coding"),
+                    ],
+                  ),
+
+                  const SizedBox(height: 35),
+
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton.icon(
                       icon: const Icon(Icons.arrow_forward),
                       label: const Text(
                         "Go to Second Screen",
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 15),
                         backgroundColor: Colors.blue,
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        elevation: 8,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(15),
                         ),
                       ),
                       onPressed: () {
@@ -103,6 +134,32 @@ class FirstScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget buildFeature(IconData icon, String title) {
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: Colors.blue.shade50,
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Icon(
+            icon,
+            size: 30,
+            color: Colors.blue,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          title,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
     );
   }
 }
